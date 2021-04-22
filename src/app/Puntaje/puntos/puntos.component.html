@@ -1,0 +1,49 @@
+
+
+<div class="content" role="main">
+    <form action="">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombre</label>
+          <input name="nombre" [(ngModel)]="model.nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+          placeholder="Ingresa tu" 
+        >
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Puntaje</label>
+          <input name="puntaje" [(ngModel)]="model.puntaje" type="number" class="form-control" 
+          id="exampleInputPassword1" placeholder="Puntaje" >
+        </div>
+        <br>
+        <button (click)="createUser()" class="btn btn-primary">Agregar usuario</button>
+        <button (click)="updateUser(model)" class="btn btn-secondary">Actualizar</button>
+    </form>
+   
+    <br>
+    
+    <div class="form-group">
+        <p>Search</p>
+        <input [(ngModel)]="this.search" type="text" class="form-control">
+        <button class="btn btn-success" (click)="searchUser()">Buscar</button>
+    </div>
+        
+    <table class="table">
+        
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Puntaje</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let jugador of jugadores">
+      <td>{{jugador.nombre}}</td>
+      <td>{{jugador.puntaje}}</td>
+      <td><button class="btn btn-danger" (click)="deleteJugador(jugador)">Eliminar</button></td>
+      <td><button class="btn btn-primary" (click)="actualizar(jugador.id)">Editar</button></td>
+    </tr>
+  </tbody>
+    </table>
+  

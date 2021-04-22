@@ -1,0 +1,30 @@
+<div class="content" role="main">
+<form action="">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Usuario</label>
+      <input name="nombre" [(ngModel)]="model.UserName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+      placeholder="Usuario" 
+    >
+    <label for="exampleInputEmail1">Nombre</label>
+    <input name="nombre"  type="text"  [(ngModel)]="model.FirstName"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+    placeholder="Nombre" 
+  >
+  <label for="exampleInputEmail1">Apellido</label>
+  <input name="nombre"  type="text" [(ngModel)]="model.LastName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+  placeholder="Apellido" 
+>
+<div class="form-group">
+    <label for="exampleInputPassword1">Contraseña</label>
+    <input name="puntaje"  [(ngModel)]="model.Password" type="password" class="form-control" 
+    id="exampleInputPassword1" placeholder="Contraseña" >
+  </div>
+    </div>
+    
+    <br>
+    <button  class="btn btn-primary" (click)="createUser()">Registrarse</button>
+  
+    <button  class="btn btn-secondary" [routerLink]="['/login']" >Volver</button>
+</form></div>
+
+
+    

@@ -1,8 +1,13 @@
+import { ngModuleJitUrl } from '@angular/compiler';
+import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { publicacionModel, userLoggedModel } from '../models';
-import { PuntosService } from '../services/puntos.service';
+import { likeModel, publicacionModel, userLoggedModel } from '../models';
+import { InicioService } from '../services/Inicio/inicio.service';
+
+
+
 
 @Component({
   selector: 'app-inicio',
@@ -11,57 +16,60 @@ import { PuntosService } from '../services/puntos.service';
 })
 export class InicioComponent implements OnInit {
 
-  user: userLoggedModel[]= []
-  publicacionModel: publicacionModel= {}
-  publicacionViewModel: publicacionModel[]=[]
   
-  username = localStorage.getItem('userName');
 
-  constructor( private puntosService: PuntosService,
+  constructor(private inicioService: InicioService,
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService) { }
 
-  ngOnInit(): void {
-    
 
-        
-    if (localStorage.getItem('userToken') != null && localStorage.getItem('userToken')!=""){
-      this.puntosService.loginResult(this.route.snapshot.params.userName)
-      .subscribe((response: any)=>{
-        this.user = response
-        for(let userr of this.user){
-        this.publicacionModel.userId = userr.id;
-       console.log(this.publicacionModel.userId)
-        }
-      })
-     
-      this.puntosService.getPublicaciones().subscribe((response: any)=>{
-        this.publicacionViewModel = response;
-      })
+    like: likeModel = {}
+    publicacionModel: publicacionModel = {}
+    user: userLoggedModel = {}
+    publicacionViewModel: publicacionModel[] = []
+    username = this.route.snapshot.params.username;
+    userid = this.route.snapshot.params.userid;
+    
+  
+  ngOnInit(): void {
+    if (localStorage.getItem('user')) 
+    {
+      this.user = JSON.parse(localStorage.getItem('user') || {} as any);
+      this.inicioService.verpublicaciones(this.userid).subscribe((response: any) =>
+    {
+     this.publicacionViewModel = response;
+    })
     }
-    else{
+    else 
+    {
       this.router.navigate(["/login"]);
     }
-  
-   
-  
-    
   }
 
-logOut(){
-  localStorage.clear();
-  this.router.navigate(["/login"]);
-}
-
-publicar(){
-
-
+  logOut() 
+  {
+    localStorage.clear();
+    this.router.navigate(["/login"]);
+  }
   
-  this.puntosService.postPublicacion(this.publicacionModel).subscribe(response=>{
-    this.toastr.info('Publicación exitosa')
+  publicar() 
+  {
+    this.publicacionModel.userId = this.userid
+    this.inicioService.publicar(this.publicacionModel, (response : any) =>{
     this.publicacionViewModel.push(response);
-  })
-}
+  });
+  }
+
+  darlike(item: any) 
+  {
+    this.inicioService.darlike(item, (response: any) =>{
+
+    });
+  }
+  verAmigos()
+  {
+    this.router.navigate(["/amigos/" + this.username +"/"+ this.userid]);
+  }
 
 }

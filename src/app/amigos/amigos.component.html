@@ -1,0 +1,100 @@
+<!-- Toolbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-faded">
+    <a class="navbar-brand" href="#">RedSocial</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          
+        </li>
+        <li class="nav-item"  style="text-align: right;">
+            <button class="btn btn-danger" (click)="logOut()">Cerrar sesión</button>
+        </li>
+        
+        
+      </ul>
+    
+    </div>
+  </nav>
+    <button class="btn btn-secondary" (click)="volver()">Volver</button>
+
+
+    <br>
+    <br>
+      
+   
+  <br>
+  <br>
+  <div class="container mt-5  justify-content-center form-group">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" (click)="verSolicitud()" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Solicitudes de amistad pendientes
+    </button>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+ <div *ngFor="let user of usuarioNoamigo">
+   
+      <mat-card class="example-card" >
+      
+        <mat-card-content>
+          <img src="https://cdn.domestika.org/c_fill,dpr_1.0,h_1200,t_base_params.format_jpg,w_1200/v1589759117/project-covers/000/721/921/721921-original.png?1589759117"
+          alt="Girl in a jacket" width="50" height="50">
+  
+          <br>
+          <br>
+         <p style="font-size: large;">
+           {{user.firstName}} {{user.lastName}} 
+  <br>
+  
+           <button *ngIf="user.estado!='enviada';" class="btn btn-primary" (click)="enviarSolicitudAmistad(user.id)">Enviar solicitud de amistad</button>
+    
+      
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+  <mat-card class="example-card">
+  <mat-card-content>
+    
+    <div class="form-group">
+      <p>Search</p>
+      <input [(ngModel)]="this.search" type="text" class="form-control">
+      <button class="btn btn-success" (click)="searchUser()">Buscar</button>
+  </div>
+</mat-card-content>
+</mat-card>
+
+
+  <div *ngFor="let user of usuarioNoamigo">
+       
+    
+   
+    <mat-card class="example-card">
+
+    
+      
+      <mat-card-content>
+
+        <img src="https://cdn.domestika.org/c_fill,dpr_1.0,h_1200,t_base_params.format_jpg,w_1200/v1589759117/project-covers/000/721/921/721921-original.png?1589759117"
+         alt="Girl in a jacket" width="120" height="100">
+
+         <br>
+         <br>
+        <p style="font-size: large;">
+         <a (click)="verperfil(user.id)">{{user.firstName}} {{user.lastName}} </a> 
+<br>
+      
+          
+      
+
+      <button *ngIf="user.estado != 'enviada' && user.estado !='aceptada' ;" class="btn btn-primary" (click)="enviarSolicitudAmistad(user.id)">Enviar solicitud de amistad</button>
+      <h3 *ngIf="user.estado =='enviada';"><span class="label label-default">Amistad en proceso</span></h3>
+
+      </mat-card-content>
+    </mat-card>
+</div>
+
+</div>

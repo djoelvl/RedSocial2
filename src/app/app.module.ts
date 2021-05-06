@@ -13,6 +13,11 @@ import { RegisterComponent } from './register/register.component'
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { AmigosComponent } from './amigos/amigos.component';
+import { SolicitudAmistadComponent } from './solicitud-amistad/solicitud-amistad.component';
+import { MuroamigoComponent } from './muroamigo/muroamigo.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,10 @@ import { InicioComponent } from './inicio/inicio.component';
     PuntosComponent,
     RegisterComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    AmigosComponent,
+    SolicitudAmistadComponent,
+    MuroamigoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,9 @@ import { InicioComponent } from './inicio/inicio.component';
     BrowserAnimationsModule,
     FormsModule, 
     rout,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

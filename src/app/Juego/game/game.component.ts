@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PuntosService } from 'src/app/services/puntos.service';
 import {userLoggedModel, UsuariosModel} from '../../models'
 
 @Component({
@@ -13,20 +12,16 @@ export class GameComponent implements OnInit {
  
   user: userLoggedModel[]= [];
 
-  constructor(private puntosService: PuntosService,
+  constructor(
     private route: ActivatedRoute) { }
 
   
 
   ngOnInit(): void {
-   this.puntosService.loginResult(this.route.snapshot.params.userName)
-   .subscribe((response: any)=>{
-    this.user = response;
-    console.log(response)
-   })
+     }
    
    
    
-  }
+  
 
 }

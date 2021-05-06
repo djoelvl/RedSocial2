@@ -2,25 +2,24 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { GameComponent } from './Juego/game/game.component';
-import { PuntosComponent } from './Puntaje/puntos/puntos.component';
 import { RegisterComponent } from './register/register.component';
 import {LoginComponent} from './login/login.component'
 import { InicioComponent } from './inicio/inicio.component';
+import { AmigosComponent } from './amigos/amigos.component';
+import { SolicitudAmistadComponent } from './solicitud-amistad/solicitud-amistad.component';
+import { MuroamigoComponent } from './muroamigo/muroamigo.component';
 
 
 const routes: Routes = [
     
     { path: 'login', component: LoginComponent },
-    { path: 'Puntos', component: PuntosComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'Juego/:userName', component: GameComponent },
-    { path: 'inicio/:userName', component: InicioComponent }
+    { path: 'inicio/:username/:userid', component: InicioComponent },
+    { path: 'amigos/:username/:userid', component: AmigosComponent},
+    { path: 'solicitud/:username/:userid', component: SolicitudAmistadComponent},
+    { path: 'muro/:username/:userid/:amigoid', component: MuroamigoComponent}
 
-    //{ path: 'path/:routeParam', component: MyComponent },
-    //{ path: 'staticPath', component: ... },
-    //{ path: '**', component: ... },
-    //{ path: 'oldPath', redirectTo: '/staticPath' },
-    //{ path: ..., component: ..., data: { message: 'Custom' }
 ];
 export const rout = RouterModule.forRoot(routes);
 

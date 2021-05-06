@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  ApiURL: "http://localhost:33553/api/puntajes/",
-  UserURL: "http://localhost:33553/api/Usuarios/",
-  publicacionURL: "http://localhost:33553/api/publicacions/"
-  
+  ApiURL: "http://localhost:51139/api",
+  UserURL: "http://localhost:51139/api/User/",
+  publicacionURL: "http://localhost:51139/api/publicacion/",
+  LikeURL: "http://localhost:51139/api/likes/"
 };
 
 /*

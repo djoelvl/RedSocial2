@@ -25,7 +25,7 @@ export class MuroamigoComponent implements OnInit {
        this.user = response;
      });
 
-     this.muroamigoservice.verpublicaciones(this.route.snapshot.params.amigoid).subscribe((response: any)=>{
+     this.muroamigoservice.verpublicaciones(this.route.snapshot.params.amigoid,this.route.snapshot.params.userid ).subscribe((response: any)=>{
        this.publicacionViewModel = response;
      }) 
   }
@@ -40,5 +40,11 @@ export class MuroamigoComponent implements OnInit {
   {
     localStorage.clear();
     this.router.navigate(["/login"]);
+  }
+
+  volver(){
+    this.router.navigate(["/amigos/" + 
+    this.route.snapshot.params.username +
+     "/" + this.route.snapshot.params.userid ]);
   }
 }

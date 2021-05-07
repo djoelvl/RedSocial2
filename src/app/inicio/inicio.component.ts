@@ -19,7 +19,7 @@ export class InicioComponent implements OnInit {
   
 
   constructor(private inicioService: InicioService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService) { }
 

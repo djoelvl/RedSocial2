@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AmigosComponent } from './amigos/amigos.component';
 import { SolicitudAmistadComponent } from './solicitud-amistad/solicitud-amistad.component';
 import { MuroamigoComponent } from './muroamigo/muroamigo.component';
+import { AuthInterceptor } from './services/httpinterceptor.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { MuroamigoComponent } from './muroamigo/muroamigo.component';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

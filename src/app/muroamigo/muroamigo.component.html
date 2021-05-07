@@ -13,7 +13,7 @@
           
         </li>
         <li class="nav-item"  style="text-align: right;">
-            <button class="btn btn-danger" >Cerrar sesión</button>
+            <button class="btn btn-danger" (click)="logOut()" >Cerrar sesión</button>
         </li>
         
         
@@ -21,7 +21,7 @@
     
     </div>
   </nav>
-  
+  <button class="btn btn-secondary" (click)="volver()">Volver</button>
     <div >
        
     </div>
@@ -44,8 +44,7 @@
                             {{user.lastName}}
                         </div>
                         <div class="button mt-2 d-flex flex-row align-items-center"> 
-                          <button class="btn btn-sm btn-outline-primary w-100" >Chat</button> 
-                          <button class="btn btn-sm btn-primary w-100 ml-2">Amigos</button> </div>
+                           </div>
                     </div>
                 </div>
             </div>
@@ -81,7 +80,7 @@
           <div>Likes: {{pb.cantidadLikes}}</div>
           <mat-card-actions>
 
-            <button mat-button class="btn btn-primary" [ngClass]="{'active':  (pb.cantidadLikes ||0) > 0 && pb.userId ==this.route.snapshot.params.userid }" (click)="darlike(pb)">LIKE</button>
+            <button mat-button class="btn btn-primary" [ngClass]="{'active':  pb.liked }" (click)="darlike(pb)">LIKE</button>
             <button mat-button class="btn btn-success">SHARE</button>
           </mat-card-actions>
         </mat-card>

@@ -48,7 +48,7 @@
            {{user.firstName}} {{user.lastName}} 
   <br>
   
-           <button *ngIf="user.estado!='enviada';" class="btn btn-primary" (click)="enviarSolicitudAmistad(user.id)">Enviar solicitud de amistad</button>
+           
     
       
         </mat-card-content>
@@ -84,15 +84,18 @@
          <br>
          <br>
         <p style="font-size: large;">
-         <a (click)="verperfil(user.id)">{{user.firstName}} {{user.lastName}} </a> 
+         <a (click)="verperfil(user.id)" >{{user.firstName}} {{user.lastName}} {{user.id}} </a> 
+         
+
+
 <br>
       
           
       
 
-      <button *ngIf="user.estado != 'enviada' && user.estado !='aceptada' ;" class="btn btn-primary" (click)="enviarSolicitudAmistad(user.id)">Enviar solicitud de amistad</button>
-      <h3 *ngIf="user.estado =='enviada';"><span class="label label-default">Amistad en proceso</span></h3>
-
+      <button *ngIf="user.estado == null ;" class="btn btn-primary" (click)="enviarSolicitudAmistad(user.id)">Enviar solicitud de amistad</button>
+      <h3 *ngIf="user.estado == 'enviada';"><span class="label label-default">Amistad en proceso</span></h3>
+      <h3 *ngIf="user.estado == 'aceptada';"><span class="label label-success">Son amigos</span></h3>
       </mat-card-content>
     </mat-card>
 </div>

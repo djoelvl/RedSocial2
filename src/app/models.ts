@@ -45,6 +45,7 @@ export interface publicacionModel{
     contenido?: string;
     userId?: number;
     cantidadLikes?: number;
+    liked?: boolean;
 }
 
 export interface likeModel{

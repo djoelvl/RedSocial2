@@ -18,8 +18,8 @@ export class MuroamigoService extends HttpService {
      return this.get("/User/GetUsuarios/" + id);
    }
 
-   verpublicaciones(id?: number){
-     return this.get("/publicacion/getpublicacionbyuserlikecount/" + id);
+   verpublicaciones(id?: number, amigoid?: number){
+     return this.get("/publicacion/getpublicacionbyuserlikecount/" + id + "/" + amigoid);
    }
 
    darlike(item: publicacionModel, id: number,callback : Function){

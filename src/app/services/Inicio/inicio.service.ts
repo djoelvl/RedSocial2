@@ -28,11 +28,11 @@ export class InicioService extends HttpService {
   }
 
   verpublicaciones(userid: number){
-    return this.get("/publicacion/getpublicacionbyuserlikecount/" + userid)
+    return this.get("/publicacion/getpublicacionbyuserlikecount/" + userid+ "/" + userid)
   }
 
   darlike(item: publicacionModel, callback : Function){
-    debugger
+    
     this.likeModel.publicacionId = item.id
     this.likeModel.remitenteId = item.userId
     return this.post("/publicacion/darlike", this.likeModel).subscribe(response =>{

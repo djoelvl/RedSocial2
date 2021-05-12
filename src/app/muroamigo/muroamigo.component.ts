@@ -15,11 +15,15 @@ export class MuroamigoComponent implements OnInit {
               public route : ActivatedRoute,
               private router: Router) { }
 
-   like: likeModel = {}
+    like: likeModel = {}
     user: userLoggedModel [] = []
+    usermodel : userLoggedModel = {}
     publicacionViewModel: publicacionModel[] = []
 
   ngOnInit(): void {
+    this.usermodel = JSON.parse(localStorage.getItem('user') || {} as any);
+    if (this.usermodel.token != null) 
+    {
 
      this.muroamigoservice.vermuro(this.route.snapshot.params.amigoid).subscribe((response: any)=>{
        this.user = response;
@@ -29,6 +33,10 @@ export class MuroamigoComponent implements OnInit {
        this.publicacionViewModel = response;
      }) 
   }
+  else{
+    this.router.navigate(["/login"]);
+  }
+}
 
   darlike(item: any){
     
